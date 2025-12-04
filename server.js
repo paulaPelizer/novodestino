@@ -6,9 +6,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// ===============================
-// "Banco de dados" em memória
-// ===============================
 
 let users = [
   {
@@ -142,13 +139,10 @@ app.post("/api/auth/register", (req, res) => {
   });
 });
 
-// ===============================
-// Rotas de itens
-// ===============================
+
 
 app.get("/api/items", (req, res) => {
-  // poderíamos aplicar filtros por query string, mas para este protótipo
-  // retornamos todos os itens e filtramos no front-end
+  // aplicar filtros por query string futuramente
   res.json(items);
 });
 
@@ -204,9 +198,7 @@ app.post("/api/items", (req, res) => {
   return res.status(201).json(newItem);
 });
 
-// ===============================
-// Rotas de lances
-// ===============================
+
 
 app.post("/api/bids", (req, res) => {
   const { itemId, type, amount, bidderName } = req.body || {};
@@ -243,9 +235,6 @@ app.post("/api/bids", (req, res) => {
   return res.status(201).json(bid);
 });
 
-// ===============================
-// Encerramento de oferta
-// ===============================
 
 app.post("/api/items/:id/finalize", (req, res) => {
   const itemId = Number(req.params.id);
@@ -333,9 +322,7 @@ function formatBidType(type) {
   }
 }
 
-// ===============================
-// Servir frontend estático
-// ===============================
+
 
 const publicDir = path.join(__dirname, "public");
 app.use(express.static(publicDir));

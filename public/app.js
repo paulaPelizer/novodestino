@@ -1,14 +1,10 @@
-// ===============================
-// Estado global
-// ===============================
+
 
 let currentUser = null;
 let itemsData = [];
 let itemModalInstance = null;
 
-// ===============================
-// Inicialização
-// ===============================
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const modalEl = document.getElementById("itemModal");
@@ -24,9 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadItems();
 });
 
-// ===============================
-// Navegação entre "telas"
-// ===============================
+
 
 function showSection(section) {
   const sections = ["landing", "login", "register", "dashboard"];
@@ -72,9 +66,7 @@ function setGlobalMessage(message, type = "info") {
   `;
 }
 
-// ===============================
-// Autenticação (login / cadastro)
-// ===============================
+
 
 function setupAuthForms() {
   const loginForm = document.getElementById("login-form");
@@ -520,9 +512,6 @@ function formatBidTypeLabel(type) {
   }
 }
 
-// ===============================
-// Formulário de lance
-// ===============================
 
 function setupBidForm() {
   const form = document.getElementById("bid-form");
