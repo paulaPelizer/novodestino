@@ -1,0 +1,12 @@
+{
+  "name": "novodestino",
+  "version": "1.2.0",
+  "description": "Protótipo NovoDestino - desafio MoviTalent (frontend + backend simples em Node.js/Express, com histórico de lances e perfis)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

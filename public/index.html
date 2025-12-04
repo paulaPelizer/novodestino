@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>NovoDestino | Dê um novo destino ao que você não usa mais</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#" onclick="showSection('landing')">
+        <div class="logo-circle me-2">ND</div>
+        <span class="fw-bold">NovoDestino</span>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Alternar navegação"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#" onclick="showSection('landing')">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#como-funciona" onclick="scrollToHow()">Como funciona</a>
+          </li>
+        </ul>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-light btn-sm" onclick="showSection('login')">
+            Entrar
+          </button>
+          <button class="btn btn-light btn-sm" onclick="showSection('register')">
+            Criar conta
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ÁREA DE ALERTAS GLOBAIS -->
+  <div class="container mt-3" id="global-messages"></div>
+
+  <main class="container my-4">
+    <!-- SECTION: LANDING / HOME -->
+    <section id="section-landing">
+      <div class="row align-items-center hero">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h1 class="hero-title">
+            Dê um novo destino ao que você não usa mais.
+          </h1>
+          <p class="hero-subtitle">
+            No <strong>NovoDestino</strong> você cadastra itens parados, recebe
+            ofertas de pessoas e empresas, e transforma sucata em oportunidade –
+            sem complicação.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-success btn-lg" onclick="showSection('register')">
+              Começar agora
+            </button>
+            <button class="btn btn-outline-secondary btn-lg" onclick="showSection('login')">
+              Já tenho cadastro
+            </button>
+          </div>
+
+          <div class="mt-4 small text-muted" id="como-funciona">
+            <strong>Como funciona:</strong> cadastre o item → defina prazo →
+            receba lances → escolha a melhor proposta.
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="hero-card shadow-sm">
+            <h5 class="mb-3">Exemplo rápido</h5>
+            <p class="mb-1"><strong>Marcos</strong> cadastrou:</p>
+            <ul class="mb-3">
+              <li>Telhas romanas, 100 m², em bom estado</li>
+              <li>Prazo de 15 dias para receber ofertas</li>
+            </ul>
+            <p class="mb-1"><strong>Maria</strong> deu um lance:</p>
+            <ul class="mb-3">
+              <li>R$ 200,00 pelas telhas, retirando no local</li>
+            </ul>
+            <p class="mb-0">
+              No fim do prazo, a melhor oferta é escolhida e o item é
+              <strong>negociado</strong> ou <strong>cancelado sem acordo</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: LOGIN -->
+    <section id="section-login" class="d-none">
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h3 class="card-title mb-3 text-center">Entrar</h3>
+              <p class="text-muted small text-center">
+                Use um dos usuários de teste ou crie sua conta na aba de cadastro.
+              </p>
+
+              <form id="login-form">
+                <div class="mb-3">
+                  <label for="login-email" class="form-label">E-mail</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="login-email"
+                    placeholder="marcos@example.com"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="login-password" class="form-label">Senha</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="login-password"
+                    placeholder="******"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">
+                  Entrar
+                </button>
+              </form>
+
+              <hr />
+              <div class="small text-muted">
+                <strong>Usuários de demonstração:</strong><br />
+                • marcos@example.com / 123456 (anunciante)<br />
+                • maria@example.com / 123456 (interessada)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: REGISTER -->
+    <section id="section-register" class="d-none">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h3 class="card-title mb-3 text-center">Criar conta</h3>
+              <form id="register-form">
+                <div class="mb-3">
+                  <label for="reg-name" class="form-label">Nome completo</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="reg-name"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="reg-email" class="form-label">E-mail</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="reg-email"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="reg-password" class="form-label">Senha</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="reg-password"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="reg-type" class="form-label">Perfil de uso</label>
+                  <select class="form-select" id="reg-type" required>
+                    <option value="">Selecione...</option>
+                    <option value="anunciante">Quero cadastrar itens e receber lances</option>
+                    <option value="interessado">Quero buscar itens e dar lances</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-success w-100">
+                  Criar conta
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: DASHBOARD -->
+    <section id="section-dashboard" class="d-none">
+      <div class="mb-3 d-flex justify-content-between align-items-center">
+        <div>
+          <h2 class="mb-0">Itens disponíveis</h2>
+          <small class="text-muted">
+            Bem-vindo(a), <span id="welcome-user-name"></span>!
+            <span id="welcome-user-profile" class="ms-1"></span>
+          </small>
+        </div>
+        <button class="btn btn-outline-danger btn-sm" onclick="logout()">
+          Sair
+        </button>
+      </div>
+
+      <!-- FILTROS -->
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Filtrar itens</h5>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label">Buscar por texto</label>
+              <input
+                type="text"
+                id="filter-text"
+                class="form-control"
+                placeholder="Ex: telhas, livros, eletrônicos..."
+              />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Categoria</label>
+              <select id="filter-category" class="form-select">
+                <option value="">Todas</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Status</label>
+              <select id="filter-status" class="form-select">
+                <option value="">Todos</option>
+                <option value="Ativo">Ativo</option>
+                <option value="Negociado">Negociado</option>
+                <option value="Cancelado">Cancelado / Sem acordo</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-3 d-flex gap-2">
+            <button class="btn btn-primary btn-sm" onclick="applyFilters()">
+              Aplicar filtros
+            </button>
+            <button class="btn btn-outline-secondary btn-sm" onclick="resetFilters()">
+              Limpar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CADASTRO RÁPIDO DE ITEM (VISÍVEL APENAS PARA ANUNCIANTE) -->
+      <div class="card mb-4 shadow-sm d-none" id="item-form-card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Cadastrar novo item (simulação)</h5>
+          <p class="small text-muted">
+            Este formulário fica disponível apenas para usuários com perfil <strong>Anunciante</strong>.
+          </p>
+          <form id="item-form" class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label">Título</label>
+              <input type="text" class="form-control" id="item-title" required />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Categoria</label>
+              <input type="text" class="form-control" id="item-category" placeholder="Ex: Construção" required />
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Prazo</label>
+              <select class="form-select" id="item-duration" required>
+                <option value="24 horas">24 horas</option>
+                <option value="1 semana">1 semana</option>
+                <option value="15 dias" selected>15 dias</option>
+                <option value="1 mês">1 mês</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Cidade / UF</label>
+              <input type="text" class="form-control" id="item-location" placeholder="Ex: Belo Horizonte / MG" required />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Quantidade / Volume</label>
+              <input type="text" class="form-control" id="item-quantity" placeholder="Ex: 50 kg, 10 caixas..." required />
+            </div>
+            <div class="col-md-9">
+              <label class="form-label">Descrição</label>
+              <input type="text" class="form-control" id="item-description" required />
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-success btn-sm">
+                Salvar item
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- LISTA DE ITENS -->
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="card-title mb-0">Resultados</h5>
+            <small class="text-muted">
+              Itens cadastrados próximos a você
+            </small>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead>
+                <tr>
+                  <th>Título</th>
+                  <th>Categoria</th>
+                  <th>Localização</th>
+                  <th>Prazo</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="items-table-body">
+                <!-- Preenchido via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DETALHES DO ITEM -->
+  <div
+    class="modal fade"
+    id="itemModal"
+    tabindex="-1"
+    aria-labelledby="itemModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="itemModalLabel">Detalhes do item</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-5 mb-3">
+              <img
+                id="modal-item-image"
+                src=""
+                alt=""
+                class="img-fluid rounded"
+              />
+            </div>
+            <div class="col-md-7">
+              <h4 id="modal-item-title"></h4>
+              <span class="badge bg-primary me-1" id="modal-item-category"></span>
+              <span class="badge bg-warning text-dark" id="modal-item-duration"></span>
+              <p class="mt-3 mb-1">
+                <strong>Localização:</strong>
+                <span id="modal-item-location"></span>
+              </p>
+              <p class="mb-1">
+                <strong>Quantidade:</strong>
+                <span id="modal-item-quantity"></span>
+              </p>
+              <p class="mb-1">
+                <strong>Dono do item:</strong>
+                <span id="modal-item-owner"></span>
+              </p>
+              <p class="mt-2" id="modal-item-description"></p>
+            </div>
+          </div>
+
+          <hr />
+
+          <!-- RESUMO DO MAIOR LANCE -->
+          <div id="best-bid-summary" class="mb-3">
+            <!-- preenchido via JS -->
+          </div>
+
+          <!-- HISTÓRICO DE LANCES -->
+          <div class="mb-4">
+            <h5 class="mb-2">Histórico de lances</h5>
+            <div id="bids-list-container" class="small">
+              <!-- preenchido via JS -->
+            </div>
+          </div>
+
+          <!-- FORMULÁRIO DE LANCE -->
+          <h5>Dar um lance neste item</h5>
+          <p class="small text-muted">
+            Escolha o formato de oferta:
+          </p>
+          <form id="bid-form">
+            <input type="hidden" id="bid-item-id" />
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="form-label">Tipo de oferta</label>
+                <select class="form-select" id="bid-type" required>
+                  <option value="">Selecione...</option>
+                  <option value="PAGA_PARA_DONO">
+                    Tenho interesse e pago (R$) pelo item
+                  </option>
+                  <option value="RETIRA_GRATIS">
+                    Tenho interesse, retiro no local e não pago nada
+                  </option>
+                  <option value="COBRA_PARA_RETIRAR">
+                    Cobro (R$) para retirar e dar destino adequado
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">
+                  Valor (R$)
+                  <span class="small text-muted d-block">
+                    Opcional para retirada gratuita.
+                  </span>
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  step="10"
+                  class="form-control"
+                  id="bid-amount"
+                  placeholder="Ex: 200"
+                />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Seu nome</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="bid-bidder-name"
+                  placeholder="Maria, DeBoa Ltda..."
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-success">
+                  Enviar lance
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div id="bid-messages" class="mt-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light py-3 mt-4">
+    <div class="container small d-flex justify-content-between">
+      <span>© 2025 NovoDestino – Protótipo acadêmico.</span>
+      <span>Feito com ♥ para o desafio MoviTalent.</span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
